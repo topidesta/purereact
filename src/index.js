@@ -2,6 +2,23 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 import moment from "moment";
+import PropTypes from "prop-types";
+
+function Comment({ author, message, likes }) {
+  return (
+    <div>
+      <div className="author">{author}</div>
+      <div className="message">{message}</div>
+      <div className="likes">{likes > 0 ? likes : "No"}</div>
+    </div>
+  );
+}
+
+Comment.propTypes = {
+  message: PropTypes.string.isRequired,
+  author: PropTypes.string.isRequired,
+  likes: PropTypes.number
+};
 
 // arrow style
 const Time = ({ time }) => {
@@ -71,6 +88,7 @@ function Tweet({ tweet }) {
           <MoreOptionsButton />
         </div>
       </div>
+      <Comment author="somebody" message="a like message" />
     </div>
   );
 }
