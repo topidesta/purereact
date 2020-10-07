@@ -17,7 +17,7 @@ function Comment({ author, message, likes }) {
 Comment.propTypes = {
   message: PropTypes.string.isRequired,
   author: PropTypes.string.isRequired,
-  likes: PropTypes.number
+  likes: PropTypes.number,
 };
 
 // arrow style
@@ -35,10 +35,18 @@ function Count(count) {
   }
 }
 
+function getRetweetCount(count) {
+  if (count > 0) {
+    return <span className="retweet-count">{count}</span>;
+  } else {
+    return null;
+  }
+}
+
 const RetweetButton = ({ count }) => (
   <span className="retweet-button">
     <i className="fa fa-retweet" />
-    <Count count={count} />
+    {getRetweetCount(count)}
   </span>
 );
 
@@ -98,11 +106,11 @@ const testTweet = {
   gravatar: "775984321d9338f0ee4425a8021db280",
   author: {
     handle: "emang_dasar",
-    name: "topidesta"
+    name: "topidesta",
   },
   likes: 2,
   retweets: 10,
-  timestamp: "2020-07-30 21:24:37"
+  timestamp: "2020-07-30 21:24:37",
 };
 
 ReactDOM.render(
