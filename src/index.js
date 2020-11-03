@@ -26,27 +26,26 @@ function FileIcon({ file }) {
     icon = 'fa-folder';
   }
   return (
-    <td className="file-icon">
+    <div>
       <i className={`fa ${icon}`} />
-    </td>
+    </div>
   )
 }
 
-function FileName({ file }) {
-  return (
-    <>
-      <FileIcon file={file} />
-      <td className="file-name">{file.name}</td>
-    </>
-  )
-}
 
 
 const FileListItem = ({ file }) => (
   // recode from FileList
   <tr className="file-list-item">
-    <FileName file={file} />
-    <CommitMessage commit={file.latestCommit} />
+    <td className="file-icon">
+      <FileIcon file={file} />
+      </td>
+    <td className="file-name">
+      {file.name}
+    </td>
+    <td className="commit-message">
+      <CommitMessage commit={file.latestCommit} /> 
+    </td>
     <td className="age">
       <Time time={file.updated_at} />
     </td>
@@ -54,9 +53,9 @@ const FileListItem = ({ file }) => (
 )
 
 const CommitMessage = ({commit}) => (
-  <td className="commit-message">
+  <div>
     {commit.message}  
-  </td>
+  </div>
 )
 
 CommitMessage.propTypes = {
