@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import './index.css';
+import Time from './Time'
 
 // Object
 const FileList = ({ files }) => (
@@ -46,6 +47,9 @@ const FileListItem = ({ file }) => (
   <tr className="file-list-item">
     <FileName file={file} />
     <CommitMessage commit={file.latestCommit} />
+    <td className="age">
+      <Time time={file.updated_at} />
+    </td>
   </tr>
 )
 
