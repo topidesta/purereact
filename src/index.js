@@ -45,8 +45,19 @@ const FileListItem = ({ file }) => (
   // recode from FileList
   <tr className="file-list-item">
     <FileName file={file} />
+    <CommitMessage commit={file.latestCommit} />
   </tr>
 )
+
+const CommitMessage = ({commit}) => (
+  <td className="commit-message">
+    {commit.message}  
+  </td>
+)
+
+CommitMessage.propTypes = {
+  commit: PropTypes.object.isRequired
+}
 
 
 const testFiles = [
