@@ -18,12 +18,36 @@ FileList.propTypes = {
   files: PropTypes.array
 }
 
+// Stateless component dengan function 
+function FileIcon({ file }) {
+  let icon = 'fa-file-text-o';
+  if(file.type === 'folder') {
+    icon = 'fa-folder';
+  }
+  return (
+    <td className="file-icon">
+      <i className={`fa ${icon}`} />
+    </td>
+  )
+}
+
+function FileName({ file }) {
+  return (
+    <>
+      <FileIcon file={file} />
+      <td className="file-name">{file.name}</td>
+    </>
+  )
+}
+
+
 const FileListItem = ({ file }) => (
   // recode from FileList
   <tr className="file-list-item">
-    <td className="file-name">{file.name}</td>
+    <FileName file={file} />
   </tr>
 )
+
 
 const testFiles = [
   {
